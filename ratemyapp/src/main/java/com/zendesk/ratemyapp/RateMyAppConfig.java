@@ -17,7 +17,7 @@ public class RateMyAppConfig {
 
     private String appVersion;
 
-    public RateMyAppConfig(Builder builder) {
+    private RateMyAppConfig(Builder builder) {
         this.storeUrl = builder.storeUrl;
         this.rules = builder.rules;
         this.appVersion = builder.appVersion;
