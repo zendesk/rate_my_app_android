@@ -15,19 +15,19 @@ public interface RateMyAppRule {
      *
      * @return true if this rule permits the showing of the dialogue, false if it does not
      */
-    boolean permitsShowOfDialog();
+    boolean permitDisplay();
 
     /**
-     * Returns an explanation for why {@code permitsShowOfDialog()}returned false. It is invoked by
+     * Returns an explanation for why {@code permitDisplay()}returned false. It is invoked by
      * {@link RateMyAppDialog#show(AppCompatActivity, RateMyAppConfig, DialogActionListener)} on any
      * rules which return false.
      *
-     * This method makes no guarantee that {@code permitsShowOfDialog()} actually returns false. It
+     * This method makes no guarantee that {@code permitDisplay()} actually returns false. It
      * will not be called by {@link RateMyAppDialog} if the rule returns true, but a client who
      * has created a rule could call {@code denialMessage()} on it even if it permits showing of
      * the dialog.
      *
-     * @return the message to log when the rule returns false for {@code permitsShowOfDialog}.
+     * @return the message to log when the rule returns false for {@code permitDisplay}.
      */
     String denialMessage();
 }

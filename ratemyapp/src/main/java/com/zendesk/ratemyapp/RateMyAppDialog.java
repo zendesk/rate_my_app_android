@@ -118,6 +118,10 @@ public class RateMyAppDialog extends DialogFragment {
                 Log.i(LOG_TAG, String.format(Locale.getDefault(), "Using store URL: %s", config.getStoreUrl()));
 
                 startActivity(storeIntent);
+
+                storeVersion();
+
+                dismiss();
             }
         });
         viewGroup.addView(buttonTextView);
@@ -134,6 +138,10 @@ public class RateMyAppDialog extends DialogFragment {
                 if (dialogActionListener != null) {
                     dialogActionListener.feedbackButtonClicked();
                 }
+
+                storeVersion();
+
+                dismiss();
             }
         });
 
@@ -152,18 +160,22 @@ public class RateMyAppDialog extends DialogFragment {
                     dialogActionListener.dontAskAgainClicked();
                 }
 
-                dismiss();
+                storeVersion();
 
-                if (getActivity() != null && config.getAppVersion() != null) {
-                    SharedPreferences.Editor sharedPrefsEditor = getActivity()
-                            .getSharedPreferences(PREFS_FILE, Context.MODE_PRIVATE).edit();
-                    sharedPrefsEditor.putString(PREFS_DONT_ASK_VERSION_KEY, config.getAppVersion());
-                    sharedPrefsEditor.apply();
-                }
+                dismiss();
             }
         });
 
         viewGroup.addView(buttonTextView);
+    }
+
+    private void storeVersion() {
+        if (getActivity() != null && config.getAppVersion() != null) {
+            SharedPreferences.Editor sharedPrefsEditor = getActivity()
+                    .getSharedPreferences(PREFS_FILE, Context.MODE_PRIVATE).edit();
+            sharedPrefsEditor.putString(PREFS_DONT_ASK_VERSION_KEY, config.getAppVersion());
+            sharedPrefsEditor.apply();
+        }
     }
 
     private void addDivider(LayoutInflater inflater, ViewGroup container) {

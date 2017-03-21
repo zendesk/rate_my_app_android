@@ -26,11 +26,11 @@ public class RateMyAppConfig {
     boolean canShow() {
         boolean canShow = true;
         for (RateMyAppRule rule: rules) {
-            boolean rulePermits = rule.permitsShowOfDialog();
+            boolean rulePermits = rule.permitDisplay();
             if (!rulePermits) {
                 Log.d(LOG_TAG, rule.denialMessage());
             }
-            canShow &= rule.permitsShowOfDialog();
+            canShow &= rule.permitDisplay();
         }
         return canShow;
     }
@@ -91,7 +91,7 @@ public class RateMyAppConfig {
 
             this.rules.add(new RateMyAppRule() {
                 @Override
-                public boolean permitsShowOfDialog() {
+                public boolean permitDisplay() {
                     String storedVersion = context.getSharedPreferences(RateMyAppDialog.PREFS_FILE,
                             Context.MODE_PRIVATE).getString(RateMyAppDialog.PREFS_DONT_ASK_VERSION_KEY, "");
 
