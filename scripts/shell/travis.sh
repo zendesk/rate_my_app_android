@@ -15,6 +15,7 @@ boxOut(){
 
 buildAll() {
   ./gradlew assembleRelease
+  exitOnFailedBuild
 }
 
 # Build types
