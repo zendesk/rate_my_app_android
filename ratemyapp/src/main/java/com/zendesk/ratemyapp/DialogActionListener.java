@@ -8,7 +8,4 @@ public interface DialogActionListener {
 
     void dontAskAgainClicked();
 
-    void cancelled();
-
-    void onSendButtonClicked(String feedback);
 }

@@ -1,1 +1,1 @@
-include ':ratemyapp'
+include ':ratemyapp', ':sampleapp'
