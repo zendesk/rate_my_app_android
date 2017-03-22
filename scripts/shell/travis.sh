@@ -14,7 +14,7 @@ boxOut(){
 }
 
 buildAll() {
-  ./gradlew assembleRelease
+  ./gradlew lintRelease assembleRelease
   exitOnFailedBuild
 }
 
