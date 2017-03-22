@@ -1,19 +1,26 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
         applicationId "com.zendesk.ratemyapp.sample"
-        minSdkVersion 15
-        targetSdkVersion 25
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
     }
+
+    lintOptions {
+        // Don't change this to false
+        abortOnError true
+        lintConfig file("lint-rules.xml")
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -25,7 +32,7 @@ android {
 dependencies {
     compile project(':ratemyapp')
 
-    compile group:'com.zendesk', name:'sdk', version: '1.9.1.1'
+    compile group:'com.zendesk', name:'sdk', version: rootProject.ext.zendeskSdkVersion
 
-    compile group:'com.android.support', name:'appcompat-v7', version: '25.1.0'
+    compile group:'com.android.support', name:'appcompat-v7', version: rootProject.ext.appCompatVersion
 }

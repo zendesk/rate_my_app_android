@@ -13,6 +13,13 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
     }
+
+    lintOptions {
+        // Don't change this to false
+        abortOnError true
+        lintConfig file("lint-rules.xml")
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -25,6 +32,6 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.1.0'
+    compile group: 'com.android.support', name:'appcompat-v7', version: rootProject.ext.appCompatVersion
     testCompile 'junit:junit:4.12'
 }
