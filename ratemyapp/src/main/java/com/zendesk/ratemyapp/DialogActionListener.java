@@ -72,19 +72,19 @@ public abstract class DialogActionListener {
         // Intentionally empty.
     }
 
-    final void feedbackButtonClicked(DialogFragment dialogFragment, RateMyAppConfig config) {
+    protected void feedbackButtonClicked(DialogFragment dialogFragment, RateMyAppConfig config) {
         onFeedbackButtonClicked(dialogFragment, config);
 
         storeVersionAndDismiss(dialogFragment, config);
     }
 
-    final void storeButtonClicked(DialogFragment dialogFragment, RateMyAppConfig config) {
+    protected final void storeButtonClicked(DialogFragment dialogFragment, RateMyAppConfig config) {
         onStoreButtonClicked(dialogFragment, config);
 
         storeVersionAndDismiss(dialogFragment, config);
     }
 
-    final void dontAskAgainClicked(DialogFragment dialogFragment, RateMyAppConfig config) {
+    protected final void dontAskAgainClicked(DialogFragment dialogFragment, RateMyAppConfig config) {
         onDontAskAgainClicked(dialogFragment, config);
 
         storeVersionAndDismiss(dialogFragment, config);
