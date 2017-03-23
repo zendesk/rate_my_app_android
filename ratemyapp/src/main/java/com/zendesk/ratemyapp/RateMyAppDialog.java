@@ -4,8 +4,8 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -15,8 +15,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
-import java.util.Locale;
 
 /**
  * This is a {@link DialogFragment DialogFragment} that will show a "Rate
@@ -53,7 +51,32 @@ public class RateMyAppDialog extends DialogFragment {
 
     private RateMyAppConfig config;
 
-    public static void show(AppCompatActivity activity, RateMyAppConfig config, DialogActionListener actionListener) {
+    /**
+     * Shows the dialog if {@link RateMyAppConfig#canShow()} returns true.
+     *
+     * This implementation shows a dialog with three buttons. Each button calls a corresponding
+     * method in the provided {@link DialogActionListener}, which can be overridden by the client to
+     * customise behaviour as desired.
+     *
+     * The methods called by the buttons are the package-private
+     * {@link DialogActionListener#storeButtonClicked(DialogFragment, RateMyAppConfig)},
+     * {@link DialogActionListener#feedbackButtonClicked(DialogFragment, RateMyAppConfig)}, and
+     * {@link DialogActionListener#dontAskAgainClicked(DialogFragment, RateMyAppConfig)} methods,
+     *  rather than the public
+     *  {@link DialogActionListener#onStoreButtonClicked(DialogFragment, RateMyAppConfig)},
+     *  {@link DialogActionListener#onFeedbackButtonClicked(DialogFragment, RateMyAppConfig)} and
+     *  {@link DialogActionListener#onDontAskAgainClicked(DialogFragment, RateMyAppConfig)}.
+     *
+     *  In {@link DialogFragment#onDetach()}, the {@link DialogActionListener} is set to {@code null}
+     *  and the {@link DialogFragment#dismiss()} is called.
+     *
+     * @param activity the {@link AppCompatActivity} on which to show the {@link DialogFragment}.
+     * @param config the {@link RateMyAppConfig} which will be used to configure the dialog
+     * @param actionListener the {@link DialogActionListener} to use as a callback object for user
+     *                       actions on the dialog
+     */
+    public static void show(@NonNull AppCompatActivity activity, @NonNull RateMyAppConfig config,
+                            @NonNull DialogActionListener actionListener) {
         if (!config.canShow()) {
             Log.d(RMA_DIALOG_TAG, "Can't show RateMyAppDialog due to configured rules.");
             return;
@@ -62,7 +85,32 @@ public class RateMyAppDialog extends DialogFragment {
         showAlways(activity, config, actionListener);
     }
 
-    public static void showAlways(AppCompatActivity activity, RateMyAppConfig config, DialogActionListener actionListener) {
+    /**
+     * Shows the dialog without checking the value of {@link RateMyAppConfig#canShow()}.
+     *
+     * This implementation shows a dialog with three buttons. Each button calls a corresponding
+     * method in the provided {@link DialogActionListener}, which can be overridden by the client to
+     * customise behaviour as desired.
+     *
+     * The methods called by the buttons are the package-private
+     * {@link DialogActionListener#storeButtonClicked(DialogFragment, RateMyAppConfig)},
+     * {@link DialogActionListener#feedbackButtonClicked(DialogFragment, RateMyAppConfig)}, and
+     * {@link DialogActionListener#dontAskAgainClicked(DialogFragment, RateMyAppConfig)} methods,
+     *  rather than the public
+     *  {@link DialogActionListener#onStoreButtonClicked(DialogFragment, RateMyAppConfig)},
+     *  {@link DialogActionListener#onFeedbackButtonClicked(DialogFragment, RateMyAppConfig)} and
+     *  {@link DialogActionListener#onDontAskAgainClicked(DialogFragment, RateMyAppConfig)}.
+     *
+     *  In {@link DialogFragment#onDetach()}, the {@link DialogActionListener} is set to {@code null}
+     *  and the {@link DialogFragment#dismiss()} is called.
+     *
+     * @param activity the {@link AppCompatActivity} on which to show the {@link DialogFragment}.
+     * @param config the {@link RateMyAppConfig} which will be used to configure the dialog
+     * @param actionListener the {@link DialogActionListener} to use as a callback object for user
+     *                       actions on the dialog
+     */
+    public static void showAlways(@NonNull AppCompatActivity activity, @NonNull RateMyAppConfig config,
+                                  @NonNull DialogActionListener actionListener) {
         FragmentManager fragmentManager = activity.getSupportFragmentManager();
 
         RateMyAppDialog fragment;
@@ -110,18 +158,8 @@ public class RateMyAppDialog extends DialogFragment {
             @Override
             public void onClick(View v) {
                 if (dialogActionListener != null) {
-                    dialogActionListener.storeButtonClicked();
+                    dialogActionListener.storeButtonClicked(RateMyAppDialog.this, config);
                 }
-
-                final Intent storeIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(config.getStoreUrl()));
-
-                Log.i(LOG_TAG, String.format(Locale.getDefault(), "Using store URL: %s", config.getStoreUrl()));
-
-                startActivity(storeIntent);
-
-                storeVersion();
-
-                dismiss();
             }
         });
         viewGroup.addView(buttonTextView);
@@ -136,12 +174,8 @@ public class RateMyAppDialog extends DialogFragment {
             @Override
             public void onClick(View v) {
                 if (dialogActionListener != null) {
-                    dialogActionListener.feedbackButtonClicked();
+                    dialogActionListener.feedbackButtonClicked(RateMyAppDialog.this, config);
                 }
-
-                storeVersion();
-
-                dismiss();
             }
         });
 
@@ -157,12 +191,8 @@ public class RateMyAppDialog extends DialogFragment {
             @Override
             public void onClick(View v) {
                 if (dialogActionListener != null) {
-                    dialogActionListener.dontAskAgainClicked();
+                    dialogActionListener.dontAskAgainClicked(RateMyAppDialog.this, config);
                 }
-
-                storeVersion();
-
-                dismiss();
             }
         });
 
@@ -188,6 +218,7 @@ public class RateMyAppDialog extends DialogFragment {
         super.onDetach();
 
         dialogActionListener = null;
+        dismiss();
     }
 
     /**

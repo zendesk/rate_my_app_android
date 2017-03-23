@@ -2,6 +2,7 @@ package com.zendesk.ratemyapp.sample;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Instantiate the demo RateMyAppConfig object we'll be using for our buttons.
         config = new RateMyAppConfig.Builder()
-                .withAndroidStoreRatingButton(PLAY_STORE_URL)
+                .withAndroidStoreUrl(PLAY_STORE_URL)
                 .withVersion(getApplicationContext(), BuildConfig.VERSION_NAME)
                 .build();
 
@@ -91,14 +92,13 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * This DialogActionListener is a simple example of how the {@link RateMyAppDialog} can be used
-     * without using Zendesk. The {@link DialogActionListener#feedbackButtonClicked()} method
-     * can be used to do whatever you want. In this case, it simply sends the user's feedback as an
-     * {@link Intent#ACTION_SEND}.
+     * without using Zendesk. The {@link DialogActionListener#onFeedbackButtonClicked(DialogFragment,
+     * RateMyAppConfig)} method can be used to do whatever you want. In this case, it simply sends
+     * a String to {@link Intent#ACTION_SEND}.
      */
     private DialogActionListener otherActionListener = new DialogActionListener() {
-        @Override public void storeButtonClicked() {}
-        @Override public void dontAskAgainClicked() {}
-        @Override public void feedbackButtonClicked() {
+        @Override
+        public void onFeedbackButtonClicked(DialogFragment dialogFragment, RateMyAppConfig config) {
             Intent intent = new Intent();
             intent.setAction(Intent.ACTION_SEND);
             intent.putExtra(Intent.EXTRA_TEXT, "The Send Feedback button was clicked!");
@@ -112,8 +112,8 @@ public class MainActivity extends AppCompatActivity {
      * {@link com.zendesk.sdk.feedback.ui.ContactZendeskActivity} to capture a user's feedback.
      */
     private DialogActionListener zendeskActionListener = new DialogActionListener() {
-        @Override public void storeButtonClicked() {}
-        @Override public void feedbackButtonClicked() {
+        @Override
+        public void onFeedbackButtonClicked(DialogFragment dialogFragment, RateMyAppConfig config) {
             ContactZendeskActivity.startActivity(MainActivity.this, new BaseZendeskFeedbackConfiguration() {
                 @Override
                 public String getRequestSubject() {
@@ -121,6 +121,5 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
-        @Override public void dontAskAgainClicked() {}
     };
 }
