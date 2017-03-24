@@ -1,0 +1,8 @@
+<resources>
+
+    <string name="rate_my_app_dialog_title_label">Устраивает ли вас приложение?</string>
+    <string name="rate_my_app_dialog_positive_action_label">Да, оценить приложение</string>
+    <string name="rate_my_app_dialog_negative_action_label">Нет, отправить отзыв.</string>
+    <string name="rate_my_app_dialog_dismiss_action_label">Больше не спрашивать</string>
+
+</resources>

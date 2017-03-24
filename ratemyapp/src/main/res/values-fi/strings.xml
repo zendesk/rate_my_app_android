@@ -1,0 +1,8 @@
+<resources>
+
+    <string name="rate_my_app_dialog_title_label">Oletko tyytyväinen sovellukseemme?</string>
+    <string name="rate_my_app_dialog_positive_action_label">Kyllä, arvioi sovelluksemme</string>
+    <string name="rate_my_app_dialog_negative_action_label">Ei, lähetä palautetta</string>
+    <string name="rate_my_app_dialog_dismiss_action_label">Älä kysy uudelleen</string>
+
+</resources>

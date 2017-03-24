@@ -1,0 +1,8 @@
+<resources>
+
+    <string name="rate_my_app_dialog_title_label">Czy podoba Ci się nasza aplikacja?</string>
+    <string name="rate_my_app_dialog_positive_action_label">Tak, oceń naszą aplikację</string>
+    <string name="rate_my_app_dialog_negative_action_label">Nie, wyślij opinię</string>
+    <string name="rate_my_app_dialog_dismiss_action_label">Nie pytaj ponownie</string>
+
+</resources>
