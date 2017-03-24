@@ -5,10 +5,8 @@
     <dimen name="view_horizontal_margin">16dp</dimen>
 
     <dimen name="rma_divider_height">1px</dimen>
-    <dimen name="rma_edit_text_size">18sp</dimen>
     <dimen name="rma_button_text_size">16sp</dimen>
     <dimen name="rma_title_text_size">22sp</dimen>
-    <dimen name="rma_subtitle_text_size">16sp</dimen>
 
     <item type="dimen" format="float" name="rma_button_line_spacing">1.25</item>
     <item type="dimen" format="float" name="rma_title_line_spacing">1.25</item>
