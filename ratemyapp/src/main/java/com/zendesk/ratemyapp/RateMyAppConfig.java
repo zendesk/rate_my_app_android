@@ -66,11 +66,11 @@ public class RateMyAppConfig {
     /**
      * Builder class used to instantiate a {@link RateMyAppConfig}.
      *
-     * All methods are technically optional, but are used to facilitate the behaviour of
-     * {@link RateMyAppDialog} and {@link DialogActionListener}.
-     *
-     * A {@code storeUrl} should be set using {@link Builder#withAndroidStoreUrl(String)}. This
+     * A {@code storeUrl} must be set using {@link Builder#withAndroidStoreUrl(String)}. This
      * enables the Play Store app to be launched at the provided URL.
+     *
+     * The other methods are technically optional, but are used to facilitate the behaviour of
+     * {@link RateMyAppDialog} and {@link DialogActionListener}.
      *
      * Using {@link Builder#withVersion(Context, String)} enables the "Don't ask again" behaviour,
      * by checking for a stored copy of the version String and preventing display of the dialog if
@@ -96,6 +96,9 @@ public class RateMyAppConfig {
          * {@link DialogActionListener#onStoreButtonClicked(DialogFragment, RateMyAppConfig)} to launch
          * an {@link android.content.Intent#ACTION_VIEW}. On a device with the Google Play Store
          * installed, this will automatically open the Play Store app to the app's listing page.
+         *
+         * If this method is not called with a non-null, non-empty String, the {@link Builder#build()}
+         * method will throw an {@link IllegalArgumentException}.
          *
          * @param storeUrl the app store URL for your app
          * @return the builder
@@ -181,6 +184,9 @@ public class RateMyAppConfig {
          * @return the configured instance of {@link RateMyAppConfig}
          */
         public RateMyAppConfig build() {
+            if (storeUrl == null || storeUrl.isEmpty()) {
+                throw new IllegalArgumentException("A storeUrl must be set using Builder#withStoreUrl()");
+            }
             return new RateMyAppConfig(this);
         }
     }
