@@ -1,3 +1,3 @@
 <resources>
-    <string name="app_name">rate_my_app_sample</string>
+    <string name="app_name" translatable="false">RateMyApp Sample</string>
 </resources>

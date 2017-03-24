@@ -1,0 +1,8 @@
+<resources>
+
+    <string name="rate_my_app_dialog_title_label">Êtes-vous satisfait de notre application ?</string>
+    <string name="rate_my_app_dialog_positive_action_label">Oui, noter notre application</string>
+    <string name="rate_my_app_dialog_negative_action_label">Non, envoyer les commentaires</string>
+    <string name="rate_my_app_dialog_dismiss_action_label">Ne plus me demander</string>
+
+</resources>

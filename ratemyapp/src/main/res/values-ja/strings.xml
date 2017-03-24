@@ -1,0 +1,8 @@
+<resources>
+
+    <string name="rate_my_app_dialog_title_label">当社のアプリにご満足されていますか?</string>
+    <string name="rate_my_app_dialog_positive_action_label">はい、アプリを評価します</string>
+    <string name="rate_my_app_dialog_negative_action_label">いいえ、不満なので評価を送ります</string>
+    <string name="rate_my_app_dialog_dismiss_action_label">今後このメッセージを表示しない</string>
+
+</resources>

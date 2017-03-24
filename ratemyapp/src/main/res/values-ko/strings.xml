@@ -1,0 +1,8 @@
+<resources>
+
+    <string name="rate_my_app_dialog_title_label">저희 앱에 만족하십니까?</string>
+    <string name="rate_my_app_dialog_positive_action_label">앱 평가하기</string>
+    <string name="rate_my_app_dialog_negative_action_label">아니요, Zendesk에 대한 의견을 보내겠습니다.</string>
+    <string name="rate_my_app_dialog_dismiss_action_label">다시 묻지 않기</string>
+
+</resources>

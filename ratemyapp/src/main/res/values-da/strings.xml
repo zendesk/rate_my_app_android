@@ -1,0 +1,8 @@
+<resources>
+
+    <string name="rate_my_app_dialog_title_label">Er du tilfreds med vores app?</string>
+    <string name="rate_my_app_dialog_positive_action_label">Ja, vurder vores app</string>
+    <string name="rate_my_app_dialog_negative_action_label">Nej, jeg sender feedback</string>
+    <string name="rate_my_app_dialog_dismiss_action_label">Spørg mig ikke igen</string>
+
+</resources>

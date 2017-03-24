@@ -1,0 +1,8 @@
+<resources>
+
+    <string name="rate_my_app_dialog_title_label">Bent u tevreden over onze app?</string>
+    <string name="rate_my_app_dialog_positive_action_label">Ja, onze app beoordelen</string>
+    <string name="rate_my_app_dialog_negative_action_label">Nee, feedback verzenden</string>
+    <string name="rate_my_app_dialog_dismiss_action_label">Mij niet opnieuw vragen</string>
+
+</resources>

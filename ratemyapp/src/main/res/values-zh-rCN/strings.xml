@@ -1,0 +1,8 @@
+<resources>
+
+    <string name="rate_my_app_dialog_title_label">您对我们的应用满意吗？</string>
+    <string name="rate_my_app_dialog_positive_action_label">是，评价我们的应用</string>
+    <string name="rate_my_app_dialog_negative_action_label">不，发送反馈</string>
+    <string name="rate_my_app_dialog_dismiss_action_label">不要再询问我</string>
+
+</resources>

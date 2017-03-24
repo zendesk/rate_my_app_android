@@ -1,0 +1,8 @@
+<resources>
+
+    <string name="rate_my_app_dialog_title_label">Uygulamamızdan memnun musunuz?</string>
+    <string name="rate_my_app_dialog_positive_action_label">Evetse, uygulamamızı değerlendirin</string>
+    <string name="rate_my_app_dialog_negative_action_label">Hayırsa, geri bildirim gönderin</string>
+    <string name="rate_my_app_dialog_dismiss_action_label">Bana tekrar sorma</string>
+
+</resources>
