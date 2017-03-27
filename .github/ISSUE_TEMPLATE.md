@@ -17,6 +17,3 @@
 
 #### Actual behaviour
 * 
-
-### Reviewers
-@zendesk/adventure @zendesk/two-brothers
