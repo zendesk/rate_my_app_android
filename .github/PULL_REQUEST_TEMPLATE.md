@@ -5,7 +5,7 @@
 @zendesk/adventure @zendesk/two-brothers
 
 ### FYI
-@KevinLambe
+* 
 
 ### References
 *
