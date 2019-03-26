@@ -50,10 +50,6 @@ uploadArchives {
     repositories {
         mavenDeployer {
 
-            snapshotRepository(url: "https://zdrepo.jfrog.io/zdrepo/simple/libs-snapshots-local/") {
-                authentication(userName: repoUsername, password: repoPassword)
-            }
-
             repository(url: "https://zendesk.jfrog.io/zendesk/simple/libs-releases-local/") {
                 authentication(userName: repoUsername, password: repoPassword)
             }
